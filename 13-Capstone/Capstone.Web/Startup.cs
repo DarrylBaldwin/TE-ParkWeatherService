@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.Web.DAL;
+using Capstone.Web.DAL.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +32,21 @@ namespace Capstone.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            string connectionString = Configuration.GetConnectionString("Default");
+
+            services.AddScoped<IParkSqlDal, ParkSqlDal>(c => new ParkSqlDal(connectionString));
+          services.AddScoped<IForecastSqlDal, ForecastSqlDal>(c => new ForecastSqlDal(connectionString));
+            services.AddScoped<ISurveySqlDal,SurveySqlDal>(c => new SurveySqlDal(connectionString));
+
+            services.AddDistributedMemoryCache();// Session
+
+            services.AddSession(options =>
+            {
+                // Sets session expiration to 20 minuates
+                options.IdleTimeout = TimeSpan.FromSeconds(1440); //24hr session for daily survey
+                options.Cookie.HttpOnly = true;
+            });
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -44,11 +61,12 @@ namespace Capstone.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
-
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
