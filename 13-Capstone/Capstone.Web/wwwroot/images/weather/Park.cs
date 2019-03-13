@@ -28,7 +28,8 @@ namespace Capstone.Web.Models
       {
           get
           {
-             string location = @"~\images\parks\" + ParkCode + ".jpg";
+             string location = @"/images/parks/" + ParkCode + ".jpg";
+              
              return location;
           }
        }  //derived
