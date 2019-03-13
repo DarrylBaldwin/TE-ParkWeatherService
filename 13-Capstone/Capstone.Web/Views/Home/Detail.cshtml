@@ -1,0 +1,144 @@
+﻿@model Capstone.Web.Models.Park
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>Park</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParkCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Acreage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Acreage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ElevationInFeet)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ElevationInFeet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MilesOfTrail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MilesOfTrail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfCampsites)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfCampsites)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Climate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Climate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkDescripton)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ParkDescripton)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.YearFounded)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearFounded)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnnualVisitorCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnnualVisitorCount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quote)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteSource)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuoteSource)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryFee)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntryFee)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfAnimalSpecies)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfAnimalSpecies)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SurveyVote)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SurveyVote)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+    </dl>
+
+    <div class="weather">
+        <div>
+            @foreach (Forecast forecast in Model.Forecast)
+            {
+               
+                <p> <img src="@forecast.Image">
+                </p>     
+
+                <p>@forecast.DisplayHigh
+                </p>
+
+                <p>@forecast.DisplayLow
+                </p>
+                
+                <p>@forecast.ForecastAdvice
+                </p>
+                
+                <p>
+                    @forecast.TemperatureAdvice
+                </p>
+            }
+        </div>
+        </div>
+    </div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

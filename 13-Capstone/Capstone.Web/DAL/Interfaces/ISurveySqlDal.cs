@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Capstone.Web.Models;
 
 namespace Capstone.Web.DAL.Interfaces
 {
     public interface ISurveySqlDal
     {
-        
+        List<Park> GetParkSurveyResults();
     }
 }

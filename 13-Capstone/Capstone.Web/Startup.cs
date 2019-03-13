@@ -35,7 +35,7 @@ namespace Capstone.Web
             string connectionString = Configuration.GetConnectionString("Default");
 
             services.AddScoped<IParkSqlDal, ParkSqlDal>(c => new ParkSqlDal(connectionString));
-          services.AddScoped<IForecastSqlDal, ForecastSqlDal>(c => new ForecastSqlDal(connectionString));
+                      services.AddScoped<IForecastSqlDal, ForecastSqlDal>(c => new ForecastSqlDal(connectionString));
             services.AddScoped<ISurveySqlDal,SurveySqlDal>(c => new SurveySqlDal(connectionString));
 
             services.AddDistributedMemoryCache();// Session
@@ -71,7 +71,7 @@ namespace Capstone.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{parkCode?}");
             });
         }
     }
