@@ -68,7 +68,6 @@ namespace Capstone.Web.Controllers
         {
             bool isFahrenheit;
             string temp = HttpContext.Session.Get<string>("UnitPreference");
-            string blah = HttpContext.Session.GetString("UnitPreference");
             if (temp == "F" || string.IsNullOrEmpty(temp))
             {
                 isFahrenheit = true;

@@ -12,8 +12,6 @@ namespace Capstone.Web.DAL.Interfaces
     {
         Park GetParkDetail(string parkCode);
         List<Park> GetParks();
-        List<SelectListItem>GetParkSelectList();
-        List<SelectListItem> GetStateSelectList();
     }
 }
 

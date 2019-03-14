@@ -13,6 +13,8 @@ namespace Capstone.Web.Models
         public string EmailAddress { get; set; }  //emailAddress
         public string State {get;set;} //state
         public string ActivityLevel { get; set;} //activityLevel
+        public int SurveyVote { get; set; }
+
 
     }
 }

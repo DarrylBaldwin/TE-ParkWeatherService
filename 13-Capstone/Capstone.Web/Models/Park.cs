@@ -23,7 +23,6 @@ namespace Capstone.Web.Models
       public  int           EntryFee{get; set;}  //entryFee
       public  int           NumberOfAnimalSpecies{get; set;}  //numbeOfAnimalSpecies
       public List<Forecast> Forecast { get; set; }
-      public int SurveyVote { get; set;}
       public string Image
       {
           get

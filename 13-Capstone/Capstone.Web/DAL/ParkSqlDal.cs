@@ -85,10 +85,7 @@ namespace Capstone.Web.DAL
             };
         }
 
-        public List<SelectListItem> GetParkSelectList()
-        {
-            throw new NotImplementedException();
-        }
+    
 
         public List<SelectListItem> GetStateSelectList()
         {

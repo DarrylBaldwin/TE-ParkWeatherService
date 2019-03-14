@@ -20,20 +20,23 @@ namespace Capstone.Web.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<DailySurvey> surveys = surveyDAL.GetParkSurveyResults();
+            return View(surveys);
         }
 
         [HttpGet]
-        public IActionResult Results()
+        public IActionResult AddSurvey()
         {
-            return View();
+            DailySurvey survey = new DailySurvey();
+            return View(survey);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Results(DailySurvey survey)
+        public IActionResult AddSurvey(DailySurvey survey)
         {
-            return View();
+            surveyDAL.SaveSurvey(survey);
+            return RedirectToAction("Index", "Survey");
         }
 
         public static List<SelectListItem> ActivityLevels = new List<SelectListItem>()
@@ -42,6 +45,60 @@ namespace Capstone.Web.Controllers
             new SelectListItem { Value = "sedentary", Text = "Sedentary" },
             new SelectListItem { Value = "active", Text = "Active"  },
             new SelectListItem { Value = "extremely active", Text = "Extremely Active"  }
+        };
+
+        public static List<SelectListItem> States = new List<SelectListItem>()
+        {
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
+            new SelectListItem { Value = "active", Text = "Active"  },
+            new SelectListItem { Value = "inactive", Text = "Inactive" },
+            new SelectListItem { Value = "sedentary", Text = "Sedentary" },
         };
     }
 }
