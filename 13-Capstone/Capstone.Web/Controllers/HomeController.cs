@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Capstone.Web.DAL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Web.Models;
+using Microsoft.AspNetCore.Http;
+using Capstone.Web.Extensions;
 
 namespace Capstone.Web.Controllers
 {
     public class HomeController : Controller
     {
-
+        
         private IParkSqlDal parkDAL;
         private IForecastSqlDal forecastDAL;
 
@@ -20,9 +22,7 @@ namespace Capstone.Web.Controllers
             this.parkDAL = parkDAL;
             this.forecastDAL = forecastDAL;
         }
-
-
-
+    
         public IActionResult Index()
         {
             List<Park> parks = parkDAL.GetParks();
@@ -33,18 +33,47 @@ namespace Capstone.Web.Controllers
         public IActionResult Detail(string parkCode)
         {
             Park park = parkDAL.GetParkDetail(parkCode);
-            park.Forecast = forecastDAL.Get5DayForecast(parkCode);
+            park.Forecast = forecastDAL.Get5DayForecast(parkCode, UnitPreference());
 
-            return View(park);
+            return View("Detail",park);
         }
 
+       
 
         void GetWeather(string parkCode)
         {
-            Park park = parkDAL.GetParkDetail(parkCode);
 
-           
+            Park park = parkDAL.GetParkDetail(parkCode);         
         }
+
+
+        public void PreferFahrenheit()
+        {
+            HttpContext.Session.Set("UnitPreference", "F");
+            
+        }
+
+        public void PreferCelsius()
+        {
+            HttpContext.Session.SetString("UnitPreference", "C");
+        }
+
+        private bool UnitPreference()
+        {
+            bool isFahrenheit;
+
+            if ((HttpContext.Session.GetString("UnitPreference") == "F") || (HttpContext.Session.GetString("UnitPreference") == null))
+            {
+                isFahrenheit = true;
+            }
+            else 
+            {
+                isFahrenheit = false;
+            }
+            
+            return isFahrenheit;
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -52,5 +81,9 @@ namespace Capstone.Web.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
+
+
+      
+  
     }//class
 }//namespace

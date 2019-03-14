@@ -114,31 +114,42 @@
         </dd>
     </dl>
 
-    <div class="weather">
+<div class="weather">
+    <div>
+        @foreach (Forecast forecast in Model.Forecast)
+        {
+            <p>
+                <img src="@forecast.Image">
+            </p>
+
+            <p>
+                @forecast.DisplayHigh
+            </p>
+
+            <p>
+                @forecast.DisplayLow
+            </p>
+
+            <p>
+                @forecast.ForecastAdvice
+            </p>
+
+            <p>
+                @forecast.TemperatureAdvice
+            </p>
+        }
         <div>
-            @foreach (Forecast forecast in Model.Forecast)
-            {
-               
-                <p> <img src="@forecast.Image">
-                </p>     
-
-                <p>@forecast.DisplayHigh
-                </p>
-
-                <p>@forecast.DisplayLow
-                </p>
-                
-                <p>@forecast.ForecastAdvice
-                </p>
-                
-                <p>
-                    @forecast.TemperatureAdvice
-                </p>
-            }
+            <ul>
+                <li><a asp-controller="Home" asp-action="PreferFahrenheit"><span></span> Fahrenheit</a></li>
+                <li><a asp-controller="Home" asp-action="PreferCelsius"><span></span> Celsius</a></li>
+            </ul>
         </div>
-        </div>
+
     </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
 </div>
