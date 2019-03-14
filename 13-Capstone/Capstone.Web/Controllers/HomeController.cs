@@ -59,7 +59,7 @@ namespace Capstone.Web.Controllers
         [HttpGet]
         public IActionResult PreferCelsius(string parkCode)
         {
-            HttpContext.Session.Set("UnitPreference", 'C');
+            HttpContext.Session.Set("UnitPreference", "C");
             string temp = HttpContext.Session.GetString("UnitPreference");
             return RedirectToAction("Detail", "Home", new { parkCode = parkCode }, null);
         }
@@ -67,9 +67,9 @@ namespace Capstone.Web.Controllers
         private bool UnitPreference()
         {
             bool isFahrenheit;
-            string temp = HttpContext.Session.GetString("UnitPreference");
-
-            if ((HttpContext.Session.GetString("UnitPreference") == "F") || (HttpContext.Session.GetString("UnitPreference") == null))
+            string temp = HttpContext.Session.Get<string>("UnitPreference");
+            string blah = HttpContext.Session.GetString("UnitPreference");
+            if (temp == "F" || string.IsNullOrEmpty(temp))
             {
                 isFahrenheit = true;
             }
