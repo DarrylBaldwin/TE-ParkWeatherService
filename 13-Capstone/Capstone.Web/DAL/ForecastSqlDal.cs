@@ -19,7 +19,7 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
-        public List<Forecast> Get5DayForecast(string parkCode)
+        public List<Forecast> Get5DayForecast(string parkCode, bool isFahrenheit)
         {
              List<Forecast> results = new List<Forecast>();
 
@@ -32,7 +32,7 @@ namespace Capstone.Web.DAL
                 var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    Forecast forecast = MapToRowForecast(reader);
+                    Forecast forecast = MapToRowForecast(reader,isFahrenheit);
                     results.Add(forecast);
                 }
             }
@@ -40,10 +40,11 @@ namespace Capstone.Web.DAL
             return results;
         }
 
-        private Forecast MapToRowForecast(SqlDataReader reader)
+        private Forecast MapToRowForecast(SqlDataReader reader, bool isFahrenheit)
         {
             Forecast forecast = new Forecast()
             {
+                IsFahrenheit = isFahrenheit,
                 ParkCode = Convert.ToString(reader["parkCode"]), //parkCode
                 Low = Convert.ToInt32(reader["low"]), //low
                 High = Convert.ToInt32(reader["high"]), //high

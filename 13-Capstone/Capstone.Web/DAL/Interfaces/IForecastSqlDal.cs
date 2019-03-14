@@ -10,7 +10,7 @@ namespace Capstone.Web.DAL.Interfaces
     {
 
 
-        List<Forecast> Get5DayForecast(string parkCode);
+        List<Forecast> Get5DayForecast(string parkCode, bool isFahrenheit);
 
     }
 

@@ -14,11 +14,11 @@ namespace Capstone.Web.Models
         public string ParkCode { get; set; } //parkCode
         public int Low { get; set; } //low
         public int High { get; set; } //high
-        public bool InFahrenheit { get; set; } = true;//TODO figure out session and how this would work.
+        public bool IsFahrenheit { get; set; } = true;
         public string DisplayLow {
             get
             {
-                if (InFahrenheit)
+                if (IsFahrenheit)
                 {
                     return Low + " degrees fahrenheit";
                 }
@@ -31,13 +31,12 @@ namespace Capstone.Web.Models
 
             }
         }
-
         public string DisplayHigh
         {
 
             get
             {
-                if (InFahrenheit)
+                if (IsFahrenheit)
                 {
                     return High + " degrees fahrenheit";
                 }
@@ -55,7 +54,6 @@ namespace Capstone.Web.Models
         }
         public string ForecastDescription { get; set; } //forecast
         public int Day { get; set; }
-
         public string ForecastAdvice
         {
             get
@@ -86,14 +84,11 @@ namespace Capstone.Web.Models
                 return msg;
             }
         }
-
         public string Image
         {
             get { return ("\\images\\weather\\" + (ForecastDescription.Replace(" ", string.Empty)) + ".png"); }
 
         }
-
-
         public string TemperatureAdvice
         {
             get
@@ -119,6 +114,7 @@ namespace Capstone.Web.Models
                 return msg;
             }
         }
+
 
 
     }//class

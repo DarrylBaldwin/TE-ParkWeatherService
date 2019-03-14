@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="wwwroot\images\weather\Park.cs" />
+    <Content Include="Models\Park.cs" />
   </ItemGroup>
 
   <ItemGroup>
