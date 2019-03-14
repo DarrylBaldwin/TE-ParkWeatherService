@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -12,6 +13,6 @@ namespace Capstone.Web.Models
         public string EmailAddress { get; set; }  //emailAddress
         public string State {get;set;} //state
         public string ActivityLevel { get; set;} //activityLevel
-   
+
     }
 }

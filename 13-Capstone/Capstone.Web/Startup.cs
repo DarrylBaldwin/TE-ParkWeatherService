@@ -28,7 +28,7 @@ namespace Capstone.Web
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context =>false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -43,7 +43,7 @@ namespace Capstone.Web
             services.AddSession(options =>
             {
                 // Sets session expiration to 20 minuates
-                options.IdleTimeout = TimeSpan.FromSeconds(1440); //24hr session for daily survey
+                options.IdleTimeout = TimeSpan.FromSeconds(20);
                 options.Cookie.HttpOnly = true;
             });
 

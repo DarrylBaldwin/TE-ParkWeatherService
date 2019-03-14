@@ -140,8 +140,8 @@
         }
         <div>
             <ul>
-                <li><a asp-controller="Home" asp-action="PreferFahrenheit"><span></span> Fahrenheit</a></li>
-                <li><a asp-controller="Home" asp-action="PreferCelsius"><span></span> Celsius</a></li>
+                <li><a asp-controller="Home" asp-action="PreferFahrenheit" asp-route-parkCode="@Model.ParkCode"><span></span> Fahrenheit</a></li>
+                <li><a asp-controller="Home" asp-action="PreferCelsius" asp-route-parkCode="@Model.ParkCode"><span></span>Celsius</a></li>
             </ul>
         </div>
 

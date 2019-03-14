@@ -32,8 +32,10 @@ namespace Capstone.Web.Controllers
         [HttpGet]
         public IActionResult Detail(string parkCode)
         {
+            bool temp = UnitPreference();
+
             Park park = parkDAL.GetParkDetail(parkCode);
-            park.Forecast = forecastDAL.Get5DayForecast(parkCode, UnitPreference());
+            park.Forecast = forecastDAL.Get5DayForecast(parkCode, temp);
 
             return View("Detail",park);
         }
@@ -46,21 +48,26 @@ namespace Capstone.Web.Controllers
             Park park = parkDAL.GetParkDetail(parkCode);         
         }
 
-
-        public void PreferFahrenheit()
+        [HttpGet]
+        public IActionResult PreferFahrenheit(string parkCode)
         {
             HttpContext.Session.Set("UnitPreference", "F");
+            return RedirectToAction("Detail", "Home", new { parkCode = parkCode }, null);
             
         }
 
-        public void PreferCelsius()
+        [HttpGet]
+        public IActionResult PreferCelsius(string parkCode)
         {
-            HttpContext.Session.SetString("UnitPreference", "C");
+            HttpContext.Session.Set("UnitPreference", 'C');
+            string temp = HttpContext.Session.GetString("UnitPreference");
+            return RedirectToAction("Detail", "Home", new { parkCode = parkCode }, null);
         }
 
         private bool UnitPreference()
         {
             bool isFahrenheit;
+            string temp = HttpContext.Session.GetString("UnitPreference");
 
             if ((HttpContext.Session.GetString("UnitPreference") == "F") || (HttpContext.Session.GetString("UnitPreference") == null))
             {

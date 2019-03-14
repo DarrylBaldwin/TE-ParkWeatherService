@@ -10,6 +10,9 @@ namespace Capstone.Web.DAL
     public class SurveySqlDal:ISurveySqlDal
 
     {
+        private const string SQL_GetStates = @"SELECT state FROM park GROUP BY state";
+        private const string SQL_GetParks = @"  SELECT parkName, parkCode FROM park GROUP BY parkCode, parkName";
+
         private readonly string connectionString;
 
 
