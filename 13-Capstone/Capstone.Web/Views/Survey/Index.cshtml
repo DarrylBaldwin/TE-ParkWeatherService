@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Capstone.Web.Models.DailySurvey>
+﻿@model IEnumerable<DailySurvey>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,17 +6,23 @@
 
 <h2>Index</h2>
 
-<p>
+<div>
+    <button type="button" onclick="location.href='@Url.Action("AddSurvey", "Survey")'" >
+       Vote
+    </button>
+</div>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ParkCode)
+                Park
             </th>
+         
             <th>
-                @Html.DisplayNameFor(model => model.SurveyVote)
+                Rating
             </th>
             <th></th>
         </tr>
@@ -25,21 +31,27 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ParkCode)
+                @{string imageLocation = string.Concat(@"/images/parks/", @item.ParkCode, ".jpg");}
+                <img src="@imageLocation"/>
+               
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SurveyVote)
+                @Html.DisplayFor(modelItem => item.ParkName)
             </td>
+            
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @item.SurveyVote < 20 {
+                    @for (int star = 0; star < @item.SurveyVote; star++)
+                    {
+                        <span class="star">★</span>
+                    }
+                }
+                else {
+                        <span class="star">item.SurveyVote ★s</span>
+                }
             </td>
+            
         </tr>
 }
     </tbody>
 </table>
-<div>
-    <p><a asp-controller="Survey" asp-action="AddSurvey">Take a Survey</a></p>
-
-</div>

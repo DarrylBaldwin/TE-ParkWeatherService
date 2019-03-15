@@ -9,8 +9,8 @@ namespace Capstone.Web.DAL.Interfaces
 {
     public interface ISurveySqlDal
     {
-        List<SelectListItem> GetParkSelectList();
-        List<DailySurvey> GetParkSurveyResults();
+       // List<SelectListItem> GetParkSelectList();
+        List<DailySurvey> GetSurveyResults();
         void SaveSurvey(DailySurvey survey);
     }
 }

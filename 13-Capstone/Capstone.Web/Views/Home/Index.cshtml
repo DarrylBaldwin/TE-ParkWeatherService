@@ -4,53 +4,29 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
-    <thead>
-        <tr>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.ParkDescripton)
-            </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
+    
     <tbody>
 @foreach (Park item in Model) {
                
-    <tr>
-           
-        <td> 
-            <a href="~/home/detail/@item.ParkCode"> @Html.DisplayFor(modelItem => item.Name)</a>
-        </td>
-       
-        <td>
-            <a href="~/home/detail/@item.ParkCode">@Html.DisplayFor(modelItem => item.State)</a>
-</td>
-            
-        <td>
-            <a href="~/home/detail/@item.ParkCode"> @Html.DisplayFor(modelItem => item.ParkDescripton)</a>
-        </td>
-            
-        <td>
+        <tr>
+            <td>
             <a href="~/home/detail/@item.ParkCode"> <img alt="Park Scenary" src="@Html.DisplayFor(modelItem => item.Image)"> </a>
-        </td>
-    
-    </tr>
+            </td>
+            <td>
+                <a href="~/home/detail/@item.ParkCode"> @Html.DisplayFor(modelItem => item.Name)</a>
+            </td>
+
+            <td>
+                <a href="~/home/detail/@item.ParkCode">@Html.DisplayFor(modelItem => item.State)</a>
+            </td>
+
+            <td>
+                <a href="~/home/detail/@item.ParkCode"> @Html.DisplayFor(modelItem => item.ParkDescripton)</a>
+            </td>
+
+          
+        </tr>
         
 }
     </tbody>

@@ -20,12 +20,12 @@ namespace Capstone.Web.Models
             {
                 if (IsFahrenheit)
                 {
-                    return Low + " degrees fahrenheit";
+                    return Low + " ℉";
                 }
                 else //celsius
                 {
-                    double celsius = ((double)Low - 32) * 5 /9;
-                    return celsius + " degrees celsius";
+                    int celsius = (int)(((double)Low - 32) * 5 /9);
+                    return celsius + " ℃";
                 }
 
 
@@ -38,12 +38,12 @@ namespace Capstone.Web.Models
             {
                 if (IsFahrenheit)
                 {
-                    return High + " degrees fahrenheit";
+                    return High + " ℉";
                 }
                 else //celsius
                 {
-                    double celsius = ((double)High - 32) * 5 / 9;
-                    return celsius + " degrees celsius";
+                    int celsius = (int)(((double)High - 32) * 5 / 9);
+                    return celsius + " ℃";
                 }
 
 
@@ -62,23 +62,23 @@ namespace Capstone.Web.Models
                 if (Day == 1 && ForecastDescription == "snow"
                 ) //assumes only lowercase and only forecast snow, rain, partly cloudy, thunderstorm, sunny
                 {
-                    msg = "Pack snowshoes!";
+                    msg = "🎿 Pack snowshoes!";
                 }
 
                 if (Day == 1 && ForecastDescription == "rain")
                 {
-                    msg = "Pack rain gear and waterproof shoes!";
+                    msg = "☔ Pack rain gear and waterproof shoes!";
 
                 }
 
                 if (Day == 1 && ForecastDescription == "sunny")
                 {
-                    msg = "Pack sunscreen.";
+                    msg = "🧴 Pack sunscreen.";
                 }
 
                 if (Day == 1 && ForecastDescription == "thunderstorms")
                 {
-                    msg = "Seek shelter and avoid hiking on exposed ridges!!";
+                    msg = "⚠️ Seek shelter and avoid hiking on exposed ridges!!";
                 }
 
                 return msg;
@@ -96,19 +96,19 @@ namespace Capstone.Web.Models
                 string msg = "";
                 if (Day == 1 && High >= 75)
                 {
-                    msg = "Bring an extra gallon of water.";
+                    msg = "💦 Bring an extra gallon of water.";
 
                 }
 
                 if (Day == 1 && High - Low >= 20) //assuming low is always less than == to high
                 {
-                    msg = "Wear breathable layers.";
+                    msg = "✨ Wear breathable layers.";
                 }
 
                 if (Day == 1 && Low <= 20) //assuming low is always less than == to high
                 {
                     msg =
-                        "Danger: frigid temperatures can cause hypothermia.  If not treated quickly, hypothermia can cause severe health problems, including death. Heart problems. Cold weather can increase your risk of a heart attack. When you're outside in the cold, your heart works harder to keep you warm — leading to increased heart rate and blood pressure.";
+                        "⚠️  Danger: frigid temperatures can cause hypothermia.  If not treated quickly, hypothermia can cause severe health problems, including death. Heart problems. Cold weather can increase your risk of a heart attack. When you're outside in the cold, your heart works harder to keep you warm — leading to increased heart rate and blood pressure.";
                 }
 
                 return msg;
