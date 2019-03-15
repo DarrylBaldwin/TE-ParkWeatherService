@@ -16,6 +16,7 @@ namespace Capstone.Web.DAL
         private const string SQL_GetParkDetail = @"SELECT * FROM park WHERE parkCode = @parkCode";
         private const string SQL_GetParks = @"SELECT * FROM park";
         
+
         public ParkSqlDal(string connectionString)
         {
             this.connectionString = connectionString;
@@ -85,19 +86,33 @@ namespace Capstone.Web.DAL
             };
         }
 
-    
 
-        public List<SelectListItem> GetStateSelectList()
-        {
-            throw new NotImplementedException();
-        }
+        //public List<SelectListItem> GetParkSelectList()
+        //{
+        //    List<SelectListItem> parkList = new List<SelectListItem>();
 
-      
-      
-
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
 
 
-       
+        //        SqlCommand command = new SqlCommand(SQL_GetParks, connection);
+        //        var reader = command.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            parkList.Add(MaptToRowPark(reader));
+        //        }
+        //    }
+        //    return parkList;
+
+        //}
+
+
+
+
+
+
+
 
     }//class
 

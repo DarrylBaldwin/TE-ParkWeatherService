@@ -11,9 +11,13 @@ namespace Capstone.Web.DAL
 {
     public class SurveySqlDal:ISurveySqlDal
     {
-        private const string SQL_GetParks = @"SELECT parkName, parkCode FROM park";
-        private const string SQL_GetSurveyResults = @"SELECT parkCode, count(parkCode) as numberOfVotes FROM survey_result 
-                                                    GROUP BY parkCode ORDER BY numberOfVotes desc";
+       // private const string SQL_GetParks = @"SELECT parkName, parkCode FROM park";
+       private const string SQL_GetSurveyResults =
+           @"SELECT survey_result.parkCode, parkName, count(survey_result.parkCode) as numberOfVotes 
+                                                    FROM survey_result 
+                                                    JOIN park ON park.parkCode = survey_result.parkCode
+                                                    GROUP BY survey_result.parkCode, parkName 
+                                                    ORDER BY numberOfVotes DESC;";
         private const string SQL_SaveNewSurvey = @"INSERT INTO survey_result (parkCode, emailAddress, state, activityLevel) 
                                                   VALUES (@parkCode, @emailAddress, @state, @activityLevel)";
 
@@ -25,36 +29,36 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
-        public List<SelectListItem> GetParkSelectList()
-        {
-            List<SelectListItem> parkList = new List<SelectListItem>();
+        //public List<SelectListItem> GetParkSelectList()
+        //{
+        //    List<SelectListItem> parkList = new List<SelectListItem>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
 
 
-                SqlCommand command = new SqlCommand(SQL_GetParks, connection);
-                var reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    parkList.Add(MaptToRowPark(reader));
-                }
-            }
-            return parkList;
+        //        SqlCommand command = new SqlCommand(SQL_GetParks, connection);
+        //        var reader = command.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            parkList.Add(MaptToRowPark(reader));
+        //        }
+        //    }
+        //    return parkList;
 
-        }
+        //}
 
-        private SelectListItem MaptToRowPark(SqlDataReader reader)
-        {
-            return new SelectListItem()
-            {
-                Value = Convert.ToString(reader["parkCode"]),
-                Text = Convert.ToString(reader["parkName"])
-            };
-        }
+        //private SelectListItem MaptToRowPark(SqlDataReader reader)
+        //{
+        //    return new SelectListItem()
+        //    {
+        //        Value = Convert.ToString(reader["parkCode"]),
+        //        Text = Convert.ToString(reader["parkName"])
+        //    };
+        //}
 
-        public List<DailySurvey> GetParkSurveyResults()
+        public List<DailySurvey> GetSurveyResults()
         {
             List<DailySurvey> results = new List<DailySurvey>();
 
@@ -70,6 +74,7 @@ namespace Capstone.Web.DAL
                     DailySurvey survey = new DailySurvey()
                     {
                         ParkCode = Convert.ToString(reader["parkCode"]),
+                        ParkName = Convert.ToString(reader["parkName"]),
                         SurveyVote = Convert.ToInt32(reader["numberOfVotes"])
                     };
                     results.Add(survey);

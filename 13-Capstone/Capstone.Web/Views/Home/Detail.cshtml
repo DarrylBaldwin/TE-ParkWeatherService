@@ -4,18 +4,15 @@
     ViewData["Title"] = "Detail";
 }
 
-<h2>Detail</h2>
+<h2>Park Detail</h2>
 
 <div>
     <h4>Park</h4>
-    <hr />
+    <img src = @Html.DisplayFor(model => model.Image)>
+    
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkCode)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ParkCode)
-        </dd>
+    
+        
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -100,50 +97,43 @@
         <dd>
             @Html.DisplayFor(model => model.NumberOfAnimalSpecies)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+      
+       
     </dl>
 
-<div class="weather">
-    <div>
-        @foreach (Forecast forecast in Model.Forecast)
-        {
-            <p>
-                <img src="@forecast.Image">
-            </p>
-
-            <p>
-                @forecast.DisplayHigh
-            </p>
-
-            <p>
-                @forecast.DisplayLow
-            </p>
-
-            <p>
-                @forecast.ForecastAdvice
-            </p>
-
-            <p>
-                @forecast.TemperatureAdvice
-            </p>
-        }
+    <div class="weather">
         <div>
-            <ul>
-                <li><a asp-controller="Home" asp-action="PreferFahrenheit" asp-route-parkCode="@Model.ParkCode"><span></span> Fahrenheit</a></li>
-                <li><a asp-controller="Home" asp-action="PreferCelsius" asp-route-parkCode="@Model.ParkCode"><span></span>Celsius</a></li>
-            </ul>
+            @foreach (Forecast forecast in Model.Forecast)
+            {
+                <p>
+                    <img src="@forecast.Image">
+                </p>
+
+                <p>
+                    @forecast.DisplayHigh
+                </p>
+
+                <p>
+                    @forecast.DisplayLow
+                </p>
+
+                <p>
+                    @forecast.ForecastAdvice
+                </p>
+
+                <p>
+                    @forecast.TemperatureAdvice
+                </p>
+            }
+            <div>
+                <ul>
+                    <li><a asp-controller="Home" asp-action="PreferFahrenheit" asp-route-parkCode="@Model.ParkCode"><span></span> Fahrenheit</a></li>
+                    <li><a asp-controller="Home" asp-action="PreferCelsius" asp-route-parkCode="@Model.ParkCode"><span></span>Celsius</a></li>
+                </ul>
+            </div>
+
         </div>
 
+     
     </div>
-
-    <div>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        <a asp-action="Index">Back to List</a>
-    </div>
-</div>
 </div>

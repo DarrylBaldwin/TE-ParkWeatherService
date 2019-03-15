@@ -10,6 +10,7 @@ namespace Capstone.Web.Models
     public class DailySurvey
     {   
         public string ParkCode { get; set; }  //parkCode
+        public string ParkName { get; set; }
         public string EmailAddress { get; set; }  //emailAddress
         public string State {get;set;} //state
         public string ActivityLevel { get; set;} //activityLevel
