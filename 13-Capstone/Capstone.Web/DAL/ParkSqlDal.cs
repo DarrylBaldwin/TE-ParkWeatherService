@@ -14,7 +14,7 @@ namespace Capstone.Web.DAL
 
         private readonly string connectionString;
         private const string SQL_GetParkDetail = @"SELECT * FROM park WHERE parkCode = @parkCode";
-        private const string SQL_GetParks = @"SELECT * FROM park";
+        private const string SQL_GetParks = @"SELECT * FROM park ORDER BY parkName";
         
 
         public ParkSqlDal(string connectionString)

@@ -17,11 +17,11 @@ namespace Capstone.Web.Controllers
 
         public SurveyController(ISurveySqlDal surveyDAL, IParkSqlDal parkDAL)
         {
-           this.surveyDAL = surveyDAL;
-           this.parkDAL = parkDAL;
+            this.surveyDAL = surveyDAL;
+            this.parkDAL = parkDAL;
         }
 
-       
+
         public IActionResult Index()
         {
             List<DailySurvey> surveys = surveyDAL.GetSurveyResults();
@@ -46,8 +46,15 @@ namespace Capstone.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddSurvey(DailySurveyViewModel model)
         {
-            surveyDAL.SaveSurvey(model.Survey);
-            return RedirectToAction("Index", "Survey");
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            else
+            {
+                surveyDAL.SaveSurvey(model.Survey);
+                return RedirectToAction("Index", "Survey");
+            }
         }
 
         public static List<SelectListItem> ActivityLevels = new List<SelectListItem>()
@@ -124,6 +131,6 @@ namespace Capstone.Web.Controllers
 
             return results;
         }
-        
-        }//class
+
+    }//class
 }//namespace
