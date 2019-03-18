@@ -4,7 +4,7 @@
     ViewData["Title"] = "AddSurvey";
 }
 
-<h2>Daily Survey</h2>
+<h2>Cast Your Vote</h2>
 
 
 <div class="row">
@@ -16,27 +16,28 @@
                 @Html.DropDownListFor(model => model.Survey.ParkCode, Model.SelectParkList, new { @class = "form-control" })
                 <span asp-validation-for="Survey.ParkCode" class="text-danger"></span>
             </div>
-                        
-                        <div class="form-group">
-                            <label asp-for="Survey.EmailAddress" class="control-label"></label>
-                            <input asp-for="Survey.EmailAddress" class="form-control" />
-                            <span asp-validation-for="Survey.EmailAddress" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Survey.State" class="control-label"></label>
-                            @Html.DropDownListFor(model => model.Survey.State, Model.SelectStatesList, new { @class = "form-control" })
-                            <span asp-validation-for="Survey.State" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Survey.ActivityLevel" class="control-label"></label>
-                          
-                                <label>@Html.RadioButtonFor(m => m.Survey.ActivityLevel, "inactive")inactive</label>
-                                <label>@Html.RadioButtonFor(m => m.Survey.ActivityLevel, "sedentary")sedentary</label>
-                                <label>@Html.RadioButtonFor(m => m.Survey.ActivityLevel, "active")active</label>
-                                <label>@Html.RadioButtonFor(m => m.Survey.ActivityLevel, "extremely active")extremely active</label>
-                           
-                            <span asp-validation-for="Survey.ActivityLevel" class="text-danger"></span>
-                        </div>
+
+            <div class="form-group">
+                <label asp-for="Survey.EmailAddress" class="control-label"></label>
+                <input asp-for="Survey.EmailAddress" class="form-control" />
+                <span asp-validation-for="Survey.EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Survey.State" class="control-label"></label>
+                @Html.DropDownListFor(model => model.Survey.State, Model.SelectStatesList, new { @class = "form-control" })
+                <span asp-validation-for="Survey.State" class="text-danger"></span>
+            </div>
+            <div class="form-group .survey">
+                <label asp-for="Survey.ActivityLevel" class="control-label"></label>
+                <div> <label>@Html.RadioButtonFor(m => m.Survey.ActivityLevel, "inactive")inactive</label></div>
+                <div><label>@Html.RadioButtonFor(m => m.Survey.ActivityLevel, "sedentary")sedentary</label></div>
+                <div><label>@Html.RadioButtonFor(m => m.Survey.ActivityLevel, "active")active</label></div>
+            <div><label>@Html.RadioButtonFor(m => m.Survey.ActivityLevel, "extremely active")extremely active</label><div>
+                </div>
+                </div>
+
+    <span asp-validation-for="Survey.ActivityLevel" class="text-danger"></span>
+</div>
                          <div class="form-group">
                             <input type="submit" value="Vote" class="btn btn-default" />
                         </div>

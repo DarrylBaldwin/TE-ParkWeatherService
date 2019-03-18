@@ -1,0 +1,19 @@
+﻿.body { }
+.location  
+{
+    
+}
+
+.star {
+    color: gold;
+    text-shadow: 1px 1px darkgoldenrod;  
+}
+.location img { max-height: 200px; max-width: 200px; height: auto; width: 100%}
+.table.location {
+    width: 60%;
+}
+table.location td { vertical-align: middle !important;}
+
+input[type="radio"] {
+    margin:5px 15px 0 0;
+}
