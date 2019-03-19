@@ -1,0 +1,21 @@
+﻿body {
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.weather {
+    display: flex;
+    flex-direction: column;
+}
+
+p img {
+    width: 50%;
+    height: auto;
+}
+
+h2 {
+    font-weight: bold;
+}

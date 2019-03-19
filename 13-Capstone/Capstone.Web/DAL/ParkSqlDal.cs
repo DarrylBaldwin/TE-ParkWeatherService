@@ -75,7 +75,7 @@ namespace Capstone.Web.DAL
                 MilesOfTrail = Convert.ToInt32(reader["milesOfTrail"]), //milesOfTrail
                 NumberOfCampsites = Convert.ToInt32(reader["numberOfCampsites"]), //numberOfCampsites
                 Climate = Convert.ToString(reader["climate"]), //climate
-                ParkDescripton = Convert.ToString(reader["parkDescription"]), //parkDescription
+                ParkDescription = Convert.ToString(reader["parkDescription"]), //parkDescription
                 YearFounded = Convert.ToInt32(reader["yearFounded"]), //yearFounded
                 AnnualVisitorCount = Convert.ToInt32(reader["annualVisitorCount"]), //annualVisitorCount
                 Quote = Convert.ToString(reader["inspirationalQuote"]), //inspirationalQuote
