@@ -3,31 +3,29 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<link href="~/css/homeIndex.css" rel="stylesheet" />
 
-<table class="table">
-    
-    <tbody>
-@foreach (Park item in Model) {
-               
-        <tr>
-            <td>
-            <a href="~/home/detail/@item.ParkCode"> <img alt="Park Scenary" src="@Html.DisplayFor(modelItem => item.Image)"> </a>
-            </td>
-            <td>
-                <a href="~/home/detail/@item.ParkCode"> @Html.DisplayFor(modelItem => item.Name)</a>
-            </td>
 
-            <td>
-                <a href="~/home/detail/@item.ParkCode">@Html.DisplayFor(modelItem => item.State)</a>
-            </td>
-
-            <td>
-                <a href="~/home/detail/@item.ParkCode"> @Html.DisplayFor(modelItem => item.ParkDescripton)</a>
-            </td>
-
-          
-        </tr>
-        
-}
-    </tbody>
-</table>
+<div class="flex-container">
+    @foreach (Park item in Model)
+    {
+        <div class="park">
+            <div class="image">
+                <a href="~/home/detail/@item.ParkCode"> <img alt="Park Scenary" src="@Html.DisplayFor(modelItem => item.Image)"> </a>
+            </div>
+            <div class="text">
+                <h3>
+                    <a href="~/home/detail/@item.ParkCode"> @Html.DisplayFor(modelItem => item.Name)</a>
+                </h3>
+                <div>
+                    <i>
+                        <a href="~/home/detail/@item.ParkCode">@Html.DisplayFor(modelItem => item.State)</a>
+                    </i>
+                </div>
+                <div class="description">
+                    <a class="park-description" href="~/home/detail/@item.ParkCode"> @Html.DisplayFor(modelItem => item.ParkDescription)</a>
+                </div>
+            </div>
+        </div><hr />
+    }
+</div>

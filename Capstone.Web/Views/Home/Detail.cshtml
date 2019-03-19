@@ -1,24 +1,19 @@
-﻿@model Capstone.Web.Models.Park
+﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model Capstone.Web.Models.Park
 
 @{
     ViewData["Title"] = "Detail";
 }
+<link href="~/css/HomeDetail.css" rel="stylesheet" />
 
-<h2>Park Detail</h2>
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
-    <h4>Park</h4>
-    <img src = @Html.DisplayFor(model => model.Image)>
-    
+    <img src=@Html.DisplayFor(model => model.Image)>
+
     <dl class="dl-horizontal">
-    
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.State)
         </dt>
@@ -56,10 +51,10 @@
             @Html.DisplayFor(model => model.Climate)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ParkDescripton)
+            @Html.DisplayNameFor(model => model.ParkDescription)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ParkDescripton)
+            @Html.DisplayFor(model => model.ParkDescription)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.YearFounded)
@@ -97,43 +92,52 @@
         <dd>
             @Html.DisplayFor(model => model.NumberOfAnimalSpecies)
         </dd>
-      
-       
+
+
     </dl>
 
-    <div class="weather">
-        <div>
+    <div>
+        <div class="flex-container">
             @foreach (Forecast forecast in Model.Forecast)
             {
-                <p>
-                    <img src="@forecast.Image">
-                </p>
+                <div class="weather">
+                    <p class="weather-image">
+                        
+                        @if (@forecast.Day == 1)
+                        {<p class ="weatherTitle"><strong>TODAY</strong></p>
+                           <img class= "mainForecast" src="@forecast.Image">
+                        }
+                        @if (@forecast.Day != 1)
+                        {<img src="@forecast.Image">
+                        }
+                    </p>
 
-                <p>
-                    @forecast.DisplayHigh
-                </p>
+                    <p>
+                        High: @forecast.DisplayHigh
+                    </p>
 
-                <p>
-                    @forecast.DisplayLow
-                </p>
+                    <p>
+                        Low: @forecast.DisplayLow
+                    </p>
 
-                <p>
-                    @forecast.ForecastAdvice
-                </p>
+                    <p>
+                        @forecast.ForecastAdvice
+                    </p>
 
-                <p>
-                    @forecast.TemperatureAdvice
-                </p>
+                    <p>
+                        @forecast.TemperatureAdvice
+                    </p>
+                </div>
             }
-            <div>
-                <ul>
-                    <li><a asp-controller="Home" asp-action="PreferFahrenheit" asp-route-parkCode="@Model.ParkCode"><span></span> Fahrenheit</a></li>
-                    <li><a asp-controller="Home" asp-action="PreferCelsius" asp-route-parkCode="@Model.ParkCode"><span></span>Celsius</a></li>
-                </ul>
-            </div>
-
+        </div><br /><br />
+        <div>
+            <ul>
+                <li><a asp-controller="Home" asp-action="PreferFahrenheit" asp-route-parkCode="@Model.ParkCode"><span></span> Fahrenheit</a></li>
+                <li><a asp-controller="Home" asp-action="PreferCelsius" asp-route-parkCode="@Model.ParkCode"><span></span>Celsius</a></li>
+            </ul>
         </div>
 
-     
+
+
     </div>
 </div>

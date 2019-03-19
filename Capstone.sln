@@ -4,8 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Capstone.Web", "Capstone.Web\Capstone.Web.csproj", "{0E401DF9-2658-49EA-A871-8410D1E8D34A}"
+<<<<<<< HEAD:Capstone.sln
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapstoneWebTests", "CapstoneWebTests\CapstoneWebTests.csproj", "{ADE68873-9B81-4B24-BEBB-0965C5B42317}"
+=======
+>>>>>>> dcbb1df91ae7b7c7eae9bf648920322ae2c6ad6c:13-Capstone/Capstone.sln
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
