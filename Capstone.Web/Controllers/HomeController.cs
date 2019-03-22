@@ -40,20 +40,18 @@ namespace Capstone.Web.Controllers
             return View("Detail",park);
         }
 
-       
 
-        void GetWeather(string parkCode)
-        {
 
-            Park park = parkDAL.GetParkDetail(parkCode);         
-        }
+        //void GetWeather(string parkCode)
+        //{
+        //    Park park = parkDAL.GetParkDetail(parkCode);
+        //}
 
         [HttpGet]
         public IActionResult PreferFahrenheit(string parkCode)
         {
             HttpContext.Session.Set("UnitPreference", "F");
-            return RedirectToAction("Detail", "Home", new { parkCode = parkCode }, null);
-            
+            return RedirectToAction("Detail", "Home", new { parkCode = parkCode }, null);           
         }
 
         [HttpGet]
