@@ -14,7 +14,7 @@ namespace Capstone.Web.Models
         public string ParkCode { get; set; } //parkCode
         public int Low { get; set; } //low
         public int High { get; set; } //high
-        public bool IsFahrenheit { get; set; } = true;
+        public bool IsFahrenheit { get; set; } = true; // TODO remove unecessary property
         public string DisplayLow {
             get
             {

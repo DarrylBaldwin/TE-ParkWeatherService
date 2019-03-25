@@ -24,6 +24,7 @@ namespace Capstone.Web.DAL
 
         public Park GetParkDetail(string parkCode)
         {
+            // TODO wrap in a try catch
             Park park = new Park();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
